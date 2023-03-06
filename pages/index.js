@@ -8,21 +8,22 @@ const graphcms = new GraphQLClient(
 const QUERY = gql`
   {
     posts {
-      id
       title
-      content {
-        html
+      datePublished
+      author {
+        name
+        avatar {
+          url
+        }
       }
-    }
-    author {
-      id
-      name
-      avatar {
+      coverPhoto {
         url
       }
+      createdAt
+      createdBy {
+        id
+      }
     }
-   
-    
   }
 `;
 
@@ -30,11 +31,11 @@ export async function getStaticProps() {
   const { posts } = await graphcms.request(QUERY);
   return {
     props: {
-      posts
+      posts,
     },
   };
 }
-export default function Home({posts}) {
+export default function Home({ posts }) {
   console.log("posts", posts);
   return (
     <>
