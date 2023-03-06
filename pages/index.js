@@ -21,28 +21,21 @@ const QUERY = gql`
         url
       }
     }
-    coverPhoto {
-      publishedAt {
-        createdBy {
-          id
-        }
-        url
-      }
-    }
+   
+    
   }
 `;
 
 export async function getStaticProps() {
-  const { posts, author, coverPhoto } = await graphcms.request(QUERY);
+  const { posts } = await graphcms.request(QUERY);
   return {
     props: {
-      posts,
-      author,
-      coverPhoto,
+      posts
     },
   };
 }
-export default function Home() {
+export default function Home({posts}) {
+  console.log("posts", posts);
   return (
     <>
       <Head>
