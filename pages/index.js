@@ -45,7 +45,18 @@ export default function Home({ posts }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      om,p.
+      <main>
+        {posts.map((post) => {
+          return (
+            <div key={post.createdAt}>
+              <h1>{post.title}</h1>
+              <p>{post.datePublished}</p>
+
+            
+            </div>
+          );
+        })}
+      </main>
     </>
   );
 }
