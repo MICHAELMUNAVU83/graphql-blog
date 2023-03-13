@@ -51,6 +51,7 @@ export default function Home({ posts }) {
             <div key={post.createdAt}>
               <h1>{post.title}</h1>
               <p>{post.datePublished}</p>
+              <p>{post.name} </p>
 
             
             </div>
